@@ -5,7 +5,7 @@ const hbs = require('hbs');
 const request = require('request');
 const forecast = require('./utils/forecast.js');
 const geo = require('./utils/geocode');
-
+const port = process.env.PORT || 3000;
 const app = express();
 
 //tell app/express about which templating engine we have installed
@@ -28,7 +28,7 @@ app.use(express.static(resourcePath));
 app.get('', (req, res) => {
   res.render('index', {
     title: 'Weather App',
-    heading: 'Who Are We',
+    heading: 'Weather App',
     message: 'Weather forecasting service!',
     name: 'WSM',
   });
@@ -76,9 +76,9 @@ app.get('/weather', (req, res) => {
         return res.send({ error });
       }
       console.log(location);
-      console.log(`${temp} Faranheight, and ${sky}`);
+      console.log(`${temp} Fahrenheit, and ${sky}`);
       res.send({
-        forecast: `${temp} Faranheight, and ${sky}`,
+        forecast: `${temp} Fahrenheit, and ${sky}`,
         location,
         address: req.query.address,
       });
@@ -90,6 +90,6 @@ app.get('*', (req, res) => {
   res.send('404 Page');
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Server started!');
 });
