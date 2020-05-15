@@ -71,18 +71,26 @@ app.get('/weather', (req, res) => {
       return res.send({ error });
     }
 
-    forecast.forecast(lat, long, (error, { temp, sky }) => {
-      if (error) {
-        return res.send({ error });
+    forecast.forecast(
+      lat,
+      long,
+      (error, { temp, sky, icon, humidity, wind_speed }) => {
+        if (error) {
+          return res.send({ error });
+        }
+        console.log(location);
+        console.log(`${temp} °Celsius , and ${sky}`);
+        res.send({
+          forecast: `${temp}<span>&#8451;</span>`,
+          location,
+          icon: icon,
+          sky,
+          humidity: humidity,
+          wind_speed: wind_speed,
+          address: req.query.address,
+        });
       }
-      console.log(location);
-      console.log(`${temp} Fahrenheit, and ${sky}`);
-      res.send({
-        forecast: `${temp} Fahrenheit, and ${sky}`,
-        location,
-        address: req.query.address,
-      });
-    });
+    );
   });
 });
 

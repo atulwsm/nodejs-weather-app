@@ -4,24 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
   <link rel="stylesheet" href="/css/styles.css">
   <title>{{title}}</title>
 </head>
 
 <body>
-  <div class="container">
+
+  <div class="card-panel hoverable center-align vert-align z-depth-5">
     {{>header}}
 
     <form action="">
-      <input type="text" placeholder="Location">
-      <button>Search</button>
-    </form>
+      <div class="input-field col s12 data-error">
+        <input id="text" type="text" class="validate">
+        <label for="text">Enter Location</label>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Get Weather<i
+          class="material-icons left">cloud</i>
+      </button>
 
-    <p id="message-1"></p>
-    <p id="message-2"></p>
-    {{>footer}}
+    </form>
+    <div class="weather-block">
+      <p id="message-2"></p>
+      <p id="message-icon"></p>
+      <p id="description"></p>
+      <p id="message-1"></p>
+      <p id="message-3" class="#a5d6a7 green-text text-lighten-3
+"></p>
+    </div>
+
+
+
+    <p id="error"></p>
   </div>
 
+
+  </div>
+
+
+
+
+
+
+
+  <!-- Compiled and minified JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <script src="/js/app.js"></script>
 </body>
